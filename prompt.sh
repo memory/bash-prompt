@@ -1,7 +1,8 @@
 #!/bin/bash
-# Filename:      custom_prompt.sh
-# Maintainer:    Dave Vehrs
-# Last Modified: 12 Jul 2005 13:29:40 by Dave Vehrs
+# Filename:      prompt.sh
+# Maintainer:    Nathan Mehl
+
+# based on Dave Vehrs' "custom_prompt.sh" from https://debian-administration.org/article/205/Fancy_Bash_Prompts
 
 # Current Format: USER@HOST [dynamic section] { CURRENT DIRECTORY }$
 # USER:      (also sets the base color for the prompt)
