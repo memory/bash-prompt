@@ -220,6 +220,12 @@ function promptcmd () {
       fi
     fi
 
+    # Python Virtualenv support
+    if [ "${VIRTUAL_ENV}" ]; then
+      VENV=$(basename $VIRTUAL_ENV)
+      PS1="${PS1}\[${COLOR_YELLOW}\][🐍:${VENV}] "
+    fi
+
     # Bracket {
     if [ ${UID} -eq 0 ]; then
         if [ "${USER}" == "${LOGNAME}" ]; then
