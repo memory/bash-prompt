@@ -73,9 +73,9 @@ function promptcmd () {
     fi
 
     # detect SCM repos
-    if (which -s hg); then
+    if (which hg 2>&1 >/dev/null); then
       MERCURIAL=$(basename $(hg root 2>/dev/null) 2>/dev/null)
-    elif (which -s git); then
+    elif (which git 2>&1 >/dev/null); then
       GIT=$(basename $(git rev-parse --show-toplevel 2>/dev/null) 2>/dev/null)
     fi
 
