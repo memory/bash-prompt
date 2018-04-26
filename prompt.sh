@@ -192,6 +192,11 @@ function promptcmd () {
         PS1="${PS1}\[${COLOR_YELLOW}\][stp:${STPJBS}] "
     fi
 
+    # local server env (e.g. amazon account, gcp project, etc)
+    if [ "${SERVER_ENV}" ]; then
+      PS1="${PS1}\[${COLOR_PURPLE}\][🌍:${SERVER_ENV}] "
+    fi
+
     # Mercurial repo support
     if [ "${MERCURIAL}" ]; then
       PS1="${PS1}\[${COLOR_LIGHTBLUE}\][☿:${MERCURIAL}] "
