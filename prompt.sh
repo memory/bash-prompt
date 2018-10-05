@@ -97,7 +97,7 @@ function promptcmd () {
     NOW=$(date)
     RULE_LENGTH=$(expr ${COLUMNS} - $(echo $NOW | wc -c))
     if [ $EXIT -eq 0 ]; then
-      HORIZONTAL_LINE="${UNDERLINE}$(eval printf '%.s\ ' {1..${RULE_LENGTH}})${NOW}${NO_UNDERLINE}"
+      HORIZONTAL_LINE="${COLOR_GREEN}${UNDERLINE}$(eval printf '%.s\ ' {1..${RULE_LENGTH}})${NOW}${NO_UNDERLINE}${COLOR_DEFAULT}"
     else
       ERR="[E:${EXIT}] "
       RULE_LENGTH=$(expr ${RULE_LENGTH} - $(echo ${ERR} | wc -c))
@@ -197,6 +197,11 @@ function promptcmd () {
       PS1="${PS1}\[${COLOR_PURPLE}\][🌍:${SERVER_ENV}] "
     fi
 
+    # kubernetes cluster
+    if [ "${KUBE_ENV}" ]; then
+      PS1="${PS1}\[${COLOR_BLUE}\][🎡:${KUBE_ENV}] "
+    fi
+
     # Mercurial repo support
     if [ "${MERCURIAL}" ]; then
       PS1="${PS1}\[${COLOR_LIGHTBLUE}\][☿:${MERCURIAL}] "
@@ -277,7 +282,7 @@ function promptcmd () {
             PS1="${PS1}\[${COLOR_BROWN}\]"
         fi
     fi
-    PS1="${PS1} }\$\[${COLOR_DEFAULT}\] "
+    PS1="${PS1} }\n\$\[${COLOR_DEFAULT}\] "
 }
 
 # Trim working dir to 1/4 the screen width
