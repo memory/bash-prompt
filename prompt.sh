@@ -66,6 +66,8 @@ function promptcmd () {
     # log the exitval of the last expr
     local EXIT="$?"
     history -a
+    #history -c
+    #history -r
     local SSH_FLAG=0
     local TTY=$(tty | awk -F/dev/ '{print $2}')
     if [[ ${TTY} ]]; then
@@ -199,7 +201,7 @@ function promptcmd () {
 
     # kubernetes cluster
     if [ "${KUBE_ENV}" ]; then
-      PS1="${PS1}\[${COLOR_BLUE}\][🎡:${KUBE_ENV}] "
+      PS1="${PS1}\[${COLOR_BLUE}\][🕸:${KUBE_ENV}:${KUBECTL_NAMESPACE:-default}] "
     fi
 
     # Mercurial repo support
